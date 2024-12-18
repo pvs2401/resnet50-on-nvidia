@@ -16,7 +16,12 @@ This repository provides scripts and resources for training the HuggingFace Food
 ## Docker Integration
 
 - **Prebuilt Containers**:  
-  Both the training and inference scripts are packaged as Docker containers (see the `Dockerfile`), which include all the required dependencies.  
+  Both the training and inference scripts are packaged as Docker containers (see the `Dockerfile`), which include all the required dependencies.
+
+- **Docker commands used to build the training and inference containers**
+    - *Training docker image* : cd training; docker build -t inference-app:latest .
+
+    - *Inference docker image* : cd inference; docker build -t food101-inference:latest -f Dockerfile.inf  .
 
 - **Running Docker**:  
   Check the `docker run` commands in the Slurm scripts to ensure that the necessary host directories are available on GPU worker nodes. Alternatively, modify the paths to match your directory structure.  
