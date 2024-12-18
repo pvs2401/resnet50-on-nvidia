@@ -1,4 +1,4 @@
-# ResNet50-Food101 on NVIDIA H100/A100
+# This mini repo contains the scripts/artifacts to perform Training & Inferencing Huggingface [ResNet50](https://huggingface.co/microsoft/resnet-50) pre-trained model and fine-tuning it using the [Food101](https://huggingface.co/datasets?p=1&sort=trending&search=food101) on NVIDIA H100/A100 GPU servers.
 
 This repository provides scripts and resources for training the HuggingFace Food101 dataset on the Microsoft ResNet50 model.
 
