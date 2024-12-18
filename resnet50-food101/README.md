@@ -1,16 +1,38 @@
-# resnet50-food101-on-nvidia H100/A100
+# ResNet50-Food101 on NVIDIA H100/A100
 
-* Scripts for training huggingface food101 dataset on MS resnet50 model.
+This repository provides scripts and resources for training the HuggingFace Food101 dataset on the Microsoft ResNet50 model.
 
-* The PyTorch/TorchRun scripts in the training and inference folders have been tested on a multi-node H100/A100 setup using Slurm job manager for training. The inference was tested on a single GPU ( H100/A100 ).
+## Overview
 
-* The Jupyter notebook can be used to validate the step-step training of this model/dataset on google colab Tesla T4 GPU.
+- **Training and Inference Scripts**:  
+  The PyTorch/TorchRun scripts located in the `training` and `inference` folders have been tested on a multi-node NVIDIA H100/A100 setup using the Slurm job manager for training. Inference was tested on a single GPU (H100/A100).  
 
-* The training script has enough comments that describes the flow and what-why of various code blocks.
+- **Step-by-Step Validation**:  
+  A Jupyter notebook is included to validate the step-by-step training of this model and dataset. The notebook has been tested on Google Colab with a Tesla T4 GPU.
 
-* Both the training and the inference scripts are packaged as docker containers ( check Dockerfile ) which contains the required packages built into the containers. Check the docker run command in the slurm scripts and make sure that the host directories are present GPU worker nodes or uses the path based on users directory structure ( For ex. /mnt/weka/tmp/resnet50demo from where docker reads the python scripts and mounts inside the container @ /app)
+- **Well-Documented Code**:  
+  The training script contains detailed comments explaining the flow and rationale behind various code blocks.
 
-* There are other folders used by slurm as placeholders for placing temporary files ( Line 18 : logs, Line 35: env variables etc.). These needs to be present on the worker GPU nodes as well.
+## Docker Integration
 
-* It will be interesting to migrate this to Kubernets or Openshift using the ML training frameworks proides by those CAAS platforms. May be the next step !
+- **Prebuilt Containers**:  
+  Both the training and inference scripts are packaged as Docker containers (see the `Dockerfile`), which include all the required dependencies.  
 
+- **Running Docker**:  
+  Check the `docker run` commands in the Slurm scripts to ensure that the necessary host directories are available on GPU worker nodes. Alternatively, modify the paths to match your directory structure.  
+  Example:  
+  Host directory `/mnt/weka/tmp/resnet50demo` is mounted inside the container at `/app`, where the Python scripts are read.
+
+## Slurm Setup
+
+- **Temporary Folders**:  
+  The Slurm scripts require additional folders for temporary files:  
+    - Line 18: `logs` directory  
+    - Line 35: environment variables  
+
+  Ensure these folders are created and accessible on all worker GPU nodes.
+
+## Things that can be looked at
+
+- **Migrating to Kubernetes or OpenShift**:  
+  Migrating this setup to Kubernetes or OpenShift using the machine learning training frameworks provided by these container orchestration platforms could be an exciting next step!
